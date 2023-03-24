@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <form action="/Collmajor/" method="POST">
+        {% csrf_token %}
+
+        <div class="py-4 text-left">
+            <h2>จัดการสาขาโรงเรียน</h2>
+        </div> 
+        <div class="col-md-3">
+                <label for="title" class="form-label">โรงเรียน</label>
+                <select class="form-select" id="Coll_name" name="Coll_name" required="">
+                    <option value="">เลือกโรงเรียน</option>
+                    {% for college in colleges %}
+                    <option value="{{college.id}}">{{college.C_name}}</option>
+                    {% endfor %}
+                </select><br>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="title">ชื่อสาขา</label>
+                <input class="form-control" type="text" id = "Cmj_name" name = "Cmj_name" placeholder = "กรอกชื่อสาขา">
+            </div><br>
+        </div>
+
+        <input type="submit" value="เพิ่ม" class = "btn btn-success me-3">
+    </form>
+
+    <form>
+        <div class="container">
+            <br>
+            <h3 align ="center"> รายชื่อสาขาโรงเรียน</h3><br>
+            <table class="table">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">ลำดับที่</th>
+                    <th scope="col">สาขา</th>
+                    <th scope="col">โรงเรียน</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for Coll_Majors in all_Coll_Majors %}
+                <tr>
+                    <td scope="row">{{ forloop.counter }}</td>
+                    <td scope="row">{{Coll_Majors.Cmj_name}}</td>
+                    <td scope="row">{{Coll_Majors.Coll_name}}</td>
+                    <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <td><a class="btn btn-warning me-md-2 btn-sm" href="#">แก้ไข</a>
+                        <a class="btn btn-danger btn-sm" href="#">ลบ</a></td>
+                    </div>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

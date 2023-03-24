@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <form action="#" method="POST">
+        {% csrf_token %}
+
+        <div class="py-4 text-left">
+            <h2>อนุมัติการเทียบโอน</h2>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-4">
+              <label for="title" class="form-label">ปีการศึกษา</label>
+              <select class="form-select" id="#" required="">
+                <option value="">เลือกปีการศึกษา</option>
+                <option>#</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+                <label for="title" class="form-label">กลุ่มนักศึกษา</label>
+                <select class="form-select" id="#" required="">
+                  <option value="">เลือกกลุ่มนักศึกษา</option>
+                  <option>#</option>
+                </select>
+              </div>
+        </div>
+
+        <input type="submit" value="แสดงข้อมูล" class = "btn btn-success me-3">
+    </form>
+
+    <form>
+        <div class="container">
+            <br>
+            <h3 align ="center"> รายชื่อ นักศึกษา</h3><br>
+            <table class="table">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">รหัสนักศึกษา</th>
+                    <th scope="col">ชื่อ - นามสกุล</th>
+                    <th scope="col">กลุ่ม</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

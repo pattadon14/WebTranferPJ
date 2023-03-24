@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <form action="#" method="POST">
+        {% csrf_token %}
+
+        <div class="py-4 text-left">
+            <h2>โมเดลเทียบโอน</h2>
+        </div> 
+        <div class="row">
+            <div class="col-md-4">
+                <label for="title" class="form-label">โรงเรียน</label>
+                <select class="form-select" id="#" required="">
+                  <option value="">เลือกโรงเรียน</option>
+                  <option>#</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="title" class="form-label">สาขา</label>
+                <select class="form-select" id="#" required="">
+                  <option value="">เลือกสาขาโรงเรียน</option>
+                  <option>#</option>
+                </select><br>
+            </div>
+            <div class="col-md-2">
+                <label for="title" class="form-label">หลักสูตร(ปวส.) พ.ศ.</label>
+                <select class="form-select" id="#" required="">
+                  <option value="">เลือก พ.ศ.</option>
+                  <option>#</option>
+                </select><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="title" class="form-label">คณะ</label>
+                <select class="form-select" id="#" required="">
+                  <option value="">เลือกคณะ</option>
+                  <option>#</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="title" class="form-label">สาขา</label>
+                <select class="form-select" id="#" required="">
+                  <option value="">เลือกสาขา</option>
+                  <option>#</option>
+                </select><br>
+            </div>
+            <div class="col-md-2">
+                <label for="title" class="form-label">หลักสูตร(ป.ตรี) พ.ศ.</label>
+                <select class="form-select" id="#" required="">
+                  <option value="">เลือก พ.ศ.</option>
+                  <option>#</option>
+                </select><br>
+            </div>
+        </div>
+
+        <input type="submit" value="แสดงข้อมูล" class = "btn btn-success me-3">
+    </form>
+
+    <form>
+        <div class="container">
+            <br>
+            <h3 align ="center"> รายชื่อ โครงสร้างหลักสูตร</h3><br>
+            <table class="table">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">ลำดับที่</th>
+                    <th scope="col">รหัสวิชา</th>
+                    <th scope="col">วิชา</th>
+                    <th scope="col">คณะ</th>
+                    <th scope="col">สาขา</th>
+                    <td scope="col"></td>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                    <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <td><a class="btn btn-warning me-md-2 btn-sm" href="#">แก้ไข</a>
+                        <a class="btn btn-danger btn-sm" href="#">ลบ</a></td>
+                    </div>
+                </tr>
+
+                </tbody>
+            </table>
+            <input type="submit" value="บันทึก" class = "btn btn-success me-3">
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
