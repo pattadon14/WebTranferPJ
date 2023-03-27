@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponseRedirect
 from .models import College,Coll_Major,Faculty,Major,Groups,UserType
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -38,6 +38,11 @@ def Collegepage(request):
     data = College.objects.all()
     return render(request, 'Admin_Colleges.html',{'colleges': data})
 
+def delete_college(request,id):
+    if request.method == 'POST':
+        data = College.objects.get(id=id)
+        data.delete()
+    return HttpResponseRedirect('/')
 
 def CollMajor(request):
     context = {}
