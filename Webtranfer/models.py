@@ -7,7 +7,6 @@ class College(models.Model):
     C_name = models.CharField(max_length=200,null=False,unique=True)
 
     class Meta:
-        ordering = ('id')
         db_table ="College"    
 
     def __str__(self):
@@ -19,43 +18,39 @@ class Coll_Major(models.Model):
     
 
     class Meta:
-        ordering = ('id')
         db_table ="Coll_Majors"
 
     def __str__(self):
         return self.Cmj_name
     
 class Faculty(models.Model):
-    Fac_ID = models.CharField(primary_key=True,null=False,unique=True)
+    Fac_ID = models.IntegerField(primary_key=True,null=False,unique=True)
     Fac_Name = models.CharField(max_length=200,null=False,unique=True)
 
     class Meta:
-        ordering = ('Fac_ID')
         db_table ="Faculty"
 
     def __str__(self):
         return self.Fac_Name
     
 class Major(models.Model):
-    Mj_ID = models.CharField(primary_key=True,null=False,unique=True)
+    Mj_ID = models.IntegerField(primary_key=True,null=False,unique=True)
     Mj_Name = models.CharField(max_length=200,null=False,unique=True)
     Fac_name = models.ForeignKey(Faculty,on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ('Mj_ID')
         db_table ="Major"
 
     def __str__(self):
         return self.Mj_Name
     
 class Groups(models.Model):
-    G_ID = models.CharField(primary_key=True,null=False,unique=True)
+    G_ID = models.IntegerField(primary_key=True,null=False,unique=True)
     G_Name = models.CharField(max_length=200,null=False,unique=True,)
     Mj_Name = models.ForeignKey(Major,on_delete=models.CASCADE,related_name='Major')
     Fac_name = models.ForeignKey(Faculty,on_delete=models.CASCADE,related_name='Faculty')
 
     class Meta:
-        ordering = ('G_ID')
         db_table ="Groups"    
    
     def __str__(self):
@@ -75,22 +70,20 @@ class Advisor(models.Model):
     Adv_Fname = models.CharField(max_length=255,null=False,unique=False)
     Adv_Lname = models.CharField(max_length=255,null=False,unique=False)
     Mj_Name = models.ForeignKey(Major,on_delete=models.CASCADE)
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
-    password = models.ForeignKey(User,on_delete=models.CASCADE)
+    Advusername = models.ForeignKey(User,on_delete=models.CASCADE)
+
 
     class Meta:
-        ordering = ('id')
         db_table ="Advisor"  
 
     def __str__(self):
         return self.Adv_Fname
 
 class Student(models.Model):
-    Std_ID = models.CharField(primary_key=True,null=False,unique=True)
+    Std_ID = models.IntegerField(primary_key=True,null=False,unique=True)
     Std_Fname = models.CharField(max_length=255,null=False,unique=False)
     Std_Lname = models.CharField(max_length=255,null=False,unique=False)
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
-    password = models.ForeignKey(User,on_delete=models.CASCADE)
+    Stdusername = models.ForeignKey(User,on_delete=models.CASCADE)
     Mj_Name = models.ForeignKey(Major,on_delete=models.CASCADE)
     G_Name = models.ForeignKey(Groups,on_delete=models.CASCADE)
     #Year
@@ -98,11 +91,10 @@ class Student(models.Model):
     Cmj_Name = models.ForeignKey(Coll_Major,on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ('Std_ID')
         db_table ="Student"  
 
 class Cur_Group(models.Model):
-    CG_ID = models.CharField(primary_key=True,null=False,unique=True)
+    CG_ID = models.IntegerField(primary_key=True,null=False,unique=True)
     CG_Name = models.CharField(max_length=255,null=False,unique=False)
 
     def __str__(self):
@@ -123,13 +115,12 @@ class Cur_Head(models.Model):
     Cr_Free= models.IntegerField((""),null=False)
 
     class Meta:
-        ordering = ('id')
         db_table ="Cur_Head"  
 
 class Cur_Detail(models.Model):
     Cur_Name =  models.ForeignKey(Cur_Head,on_delete=models.CASCADE) 
     CG_Name = models.ForeignKey(Cur_Group,on_delete=models.CASCADE)
-    Subj_ID =  models.CharField(primary_key=True,null=False,unique=True)
+    Subj_ID =  models.IntegerField(primary_key=True,null=False,unique=True)
     Subj_Cr = models.IntegerField((""),null=False)
 
 
