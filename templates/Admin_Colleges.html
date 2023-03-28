@@ -40,7 +40,7 @@
                     <td scope="row">{{college.C_name}}</td>
                     <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <td><a class="btn btn-warning me-md-2 btn-sm" href="#">แก้ไข</a>
-                        <form action="{% url 'delete_college' college.id %}" 
+                        <form action="#" 
                         method="post" class="d-inline">{% csrf_token %}
                             <input type="submit" class="btn btn-danger me-md-2 btn-sm" value="Delete">
                         </form></td>

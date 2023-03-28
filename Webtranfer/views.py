@@ -1,7 +1,8 @@
-from django.shortcuts import render,redirect,HttpResponseRedirect
-from .models import College,Coll_Major,Faculty,Major,Groups,UserType
+from django.shortcuts import render
+from .models import College,Coll_Major,Faculty,Major,Groups
 from django.contrib import messages
 from django.contrib.auth.models import User
+
 
 ####### Normal #######
 
@@ -37,12 +38,6 @@ def Collegepage(request):
     #Query Data from database
     data = College.objects.all()
     return render(request, 'Admin_Colleges.html',{'colleges': data})
-
-def delete_college(request,id):
-    if request.method == 'POST':
-        data = College.objects.get(id=id)
-        data.delete()
-    return HttpResponseRedirect('/')
 
 def CollMajor(request):
     context = {}
