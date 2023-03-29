@@ -39,11 +39,9 @@
                     <td scope="row">{{ forloop.counter }}</td>
                     <td scope="row">{{college.C_name}}</td>
                     <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <td><a class="btn btn-warning me-md-2 btn-sm" href="#">แก้ไข</a>
-                        <form action="{% url 'delete_college' college.id %}" 
-                        method="post" class="d-inline">{% csrf_token %}
-                            <input type="submit" class="btn btn-danger me-md-2 btn-sm" value="Delete">
-                        </form></td>
+                        <td><a href="/edit_collegepage/{{college.id}}" class="btn btn-warning me-md-2 btn-sm" >แก้ไข</a>
+                            <a href="/delete_collegepage/{{college.id}}" class="btn btn-danger me-md-2 btn-sm" onclick ="return confirm('คุณต้องการลบข้อมูล {{college.C_name}} หรือไม่ ?')">ลบ</a>
+                        </td>
                     </div>
                 </tr>
                 {% endfor %}

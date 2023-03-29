@@ -13,6 +13,7 @@ urlpatterns = [
     
     #ADMIN
     path('collegepage/',views.Collegepage ,name='collegepage'),
+    path('edit_collegepage/<college_id>',views.edit_college ,name='edit_college'),
     path('delete_college/<int:id>/',views.delete_college ,name='delete_college'),
     path('Faculty/',views.Facultys ,name='Faculty'),
     path('Collmajor/',views.CollMajor ,name='Collmajor'),

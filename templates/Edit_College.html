@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="py-4 text-left">
+            <h2>แก้ไขข้อมูลโรงเรียน</h2>
+        </div> 
+        
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="title">ชื่อโรงเรียน</label>
+                <input class="form-control" type="text" id = "C_name" name = "C_name" value ="{{colleges.C_name}}">
+            </div><br>
+        </div>
+        <input type="submit" value="อัปเดตข้อมูล" class = "btn btn-success me-3">
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,HttpResponseRedirect
-from .models import College,Coll_Major,Faculty,Major,Groups,UserType
+from .models import College,Coll_Major,Faculty,Major,Groups,User,Advisor,Student,Cur_Group,Cur_Head,Cur_Detail
 from django.contrib import messages
 from django.contrib.auth.models import User
 
@@ -38,11 +38,20 @@ def Collegepage(request):
     data = College.objects.all()
     return render(request, 'Admin_Colleges.html',{'colleges': data})
 
-def delete_college(request,id):
-    if request.method == 'POST':
-        data = College.objects.get(id=id)
-        data.delete()
-    return HttpResponseRedirect('/')
+def edit_college(request,college_id):
+    if request.method == "POST":
+        data = College.objects.get(id=college_id)
+        data.C_name = request.POST["C_name"]
+        data.save()
+        return redirect('collegepage')
+    else:
+        data = College.objects.get(id=college_id)
+        return render(request,'Edit_College.html',{'colleges': data})
+
+def delete_college(request,college_id):
+    data = College.objects.get(id=college_id)
+    data.delete()
+    return redirect('collegepage')
 
 def CollMajor(request):
     context = {}
