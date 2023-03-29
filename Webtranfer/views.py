@@ -71,7 +71,6 @@ def CollMajor(request):
     all_Coll_Majors = Coll_Major.objects.all()
     return render(request,'Admin_Coll_Major.html',{'all_Coll_Majors': all_Coll_Majors,'colleges': data})
 
-
 def Facultys(request):
     context = {}
     if request.method == "POST":
