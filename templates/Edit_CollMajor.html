@@ -9,12 +9,12 @@
         {% csrf_token %}
 
         <div class="py-4 text-left">
-            <h2>จัดการสาขาโรงเรียน</h2>
+            <h2>แก้ไขข้อมูลสาขาโรงเรียน</h2>
         </div> 
         <div class="col-md-3">
                 <label for="title" class="form-label">โรงเรียน</label>
-                <select class="form-select" id="Coll_name" name="Coll_name" required="">
-                    <option value="">เลือกโรงเรียน</option>
+                <select class="form-select" id="Coll_name" name="Coll_name" value="{{all_Coll_Majors.Coll_name}}">
+                    <option value="">{{all_Coll_Majors.Coll_name}}</option>
                     {% for college in colleges %}
                     <option value="{{college.id}}">{{college.C_name}}</option>
                     {% endfor %}
@@ -23,13 +23,13 @@
         <div class="col-sm-3">
             <div class="form-group">
                 <label for="title">ชื่อสาขา</label>
-                <input class="form-control" type="text" id = "Cmj_name" name = "Cmj_name" placeholder = "กรอกชื่อสาขา">
+                <input class="form-control" type="text" id = "Cmj_name" name = "Cmj_name" value="{{all_Coll_Majors.Cmj_name}}">
             </div><br>
         </div>
 
-        <input type="submit" value="เพิ่ม" class = "btn btn-success me-3">
+        <input type="submit" value="อัปปเดตข้อมูล" class = "btn btn-success me-3">
     </form>
-    
+
 </div>
 
 {% endblock content %}
