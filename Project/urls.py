@@ -17,6 +17,7 @@ urlpatterns = [
     path('delete_college/<int:id>/',views.delete_college ,name='delete_college'),
     path('Faculty/',views.Facultys ,name='Faculty'),
     path('Collmajor/',views.CollMajor ,name='Collmajor'),
+    path('edit_CollMajor/<CollMajor_id>',views.edit_CollMajor ,name='edit_CollMajor'),
     path('Major/',views.Majors ,name='Major'),
     path('Group/',views.Group ,name='Group'),
     path('Course/',views.Course ,name='Course'),

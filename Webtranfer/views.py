@@ -70,15 +70,16 @@ def CollMajor(request):
     all_Coll_Majors = Coll_Major.objects.all()
     return render(request,'Admin_Coll_Major.html',{'all_Coll_Majors': all_Coll_Majors,'colleges': data})
 
-def edit_college(request,college_id):
+def edit_CollMajor(request,CollMajor_id):
     if request.method == "POST":
-        data = College.objects.get(id=college_id)
-        data.C_name = request.POST["C_name"]
-        data.save()
-        return redirect('collegepage')
+        all_Coll_Majors = Coll_Major.objects.get(id=CollMajor_id)
+        all_Coll_Majors.C_name = request.POST["C_name"]
+        all_Coll_Majors.C_name = request.POST["C_name"]
+        all_Coll_Majors.save()
+        return redirect('Collmajor')
     else:
-        data = College.objects.get(id=college_id)
-        return render(request,'Edit_College.html',{'colleges': data})
+        all_Coll_Majors = Coll_Major.objects.get(id=CollMajor_id)
+        return render(request,'Edit_CollMajor.html',{'all_Coll_Majors': all_Coll_Majors})
 
 def delete_college(request,college_id):
     data = College.objects.get(id=college_id)
