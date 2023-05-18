@@ -70,6 +70,22 @@ def CollMajor(request):
     all_Coll_Majors = Coll_Major.objects.all()
     return render(request,'Admin_Coll_Major.html',{'all_Coll_Majors': all_Coll_Majors,'colleges': data})
 
+def edit_CollMajor(request,CollMajor_id):
+    if request.method == "POST":
+        all_Coll_Majors = Coll_Major.objects.get(id=CollMajor_id)
+        all_Coll_Majors.Coll_name = request.POST["Coll_name"]
+        all_Coll_Majors.Cmj_name = request.POST["Cmj_name"]
+        all_Coll_Majors.save()
+        return redirect('Collmajor')
+    else:
+        data = College.objects.all()
+        all_Coll_Majors = Coll_Major.objects.get(id=CollMajor_id)
+        return render(request,'Edit_CollMajor.html',{'all_Coll_Majors': all_Coll_Majors,'colleges': data})
+
+def delete_college(request,college_id):
+    data = College.objects.get(id=college_id)
+    data.delete()
+    return redirect('collegepage')
 
 def Facultys(request):
     context = {}
