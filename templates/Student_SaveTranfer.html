@@ -7,28 +7,16 @@
 <div class="container">
     <form action="#" method="POST">
         {% csrf_token %}
-
-        <div class="py-5">
-            <center><h2 class="mb-5">เทียบโอนผลการเรียน</h2>
-            <div class="row g-3 justify-content-center mb-3 ">
-                <div class="col-sm-3 text-start mb-3">
-                    <label for="title" class="form-label">ชื่อนักศึกษา</label>
-                    <input type="text" class="form-control" id="#" name = "#" placeholder="เอาชื่อนักศึกษาที่เข้าสู่ระบบมาใส่" >
-                </div>
-                <div class="col-sm-2 text-start mb-3">
-                    <label for="title" class="form-label">รหัสนักศึกษา</label>
-                    <input type="text" class="form-control" id="#" name = "#" placeholder="เอารหัสนักศึกษาที่เข้าสู่ระบบมาใส่" >
-                </div>
-            </div></center>
-        </div>
-    </form>
-
-    <main>
-        <div class="row row-cols-2 row-cols-md-3 mb-3 text-center">
+        
+        <div class="py-4 text-center">
+            <h2>บันทึกเทียบโอนผลการเรียน</h2>
+        </div> 
+    
+        <div class="row row-cols-2 row-cols text-center">
             <div class="col">
                 <div class="card mb-4 rounded-3 shadow-sm " style="width:40rem;">
-                    <div class="card-header py-3 bg-warning mb-4">
-                        <center><h4 class="my-0 fw-normal ">รายละเอียดสถาบันเดิม</h4></center>
+                    <div class="card-header py-3 bg-primary text-white mb-4">
+                        <center><h4 class="my-0 fw-normal ">รายวิชาที่ขอเทียบโอนจากสถาบันเดิม</h4></center>
                     </div>
                     <div class="row g-3 align-items-center mx-4 mb-4">
                         <div class="col-auto">
@@ -56,27 +44,121 @@
                             </select>
                         </div>
                     </div>
-                    <div class="card-header py-2 bg-secondary mb-4">
-                        <center><span class="my-0 fw-normal text-white">หมวดวิชามนุษย์ศาสตร์และสังคมสาศตร์</span></center>
-                    </div>
-                    <form class="mb-3" id="myForm" >
-                        <!-- ตำแหน่งสำหรับแทรกช่องใส่ข้อมูล -->
-                    </form>
-                    <center><button class="w-50 btn btn-sm btn-success mb-3" onclick="addInput()">นักศึกษา</button></center>
+                    <div>
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชามนุษย์ศาสตร์และสังคมสาศตร์</span></center>
+                        </div>
+                        <form class="mb-3" id="myForm" >
+                            <!-- ตำแหน่งสำหรับแทรกช่องใส่ข้อมูล -->
+                        </form>
+                        <center><button class="w-50 btn btn-sm btn-success mb-3" onclick="addInput()">เพิ่มข้อมูล</button></center>
+                            
+                            <script>
+                                function addInput() {
+                                var form = document.getElementById("myForm");
+                                var input = document.createElement("input");
+                                form.appendChild(input);
+                                }
+                            </script>
                         
-                        <script>
-                            function addInput() {
-                            var form = document.getElementById("myForm");
-                            var input = document.createElement("input");
-                            form.appendChild(input);
-                            }
-                        </script>
-                   
-                    {% comment %} <input type="submit" value="ลงทะเบียน" class="w-100 btn btn-lg btn-success"> {% endcomment %}
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชาภาษา</span></center>
+                        </div>
+
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชาคณิตศาสตร์และวิทยาศาสตร์</span></center>
+                        </div>
+
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชาแกน</span></center>
+                        </div>
+
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชาเลือก แขนงเทคโนโลยีสารสนเทศ</span></center>
+                        </div>
+
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชาเลือกเสรี</span></center>
+                        </div>
+                    
+                        {% comment %} <input type="submit" value="ลงทะเบียน" class="w-100 btn btn-lg btn-success"> {% endcomment %}
+                    </div>
                 </div>
             </div>
-            
-    </main>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm " style="width:40rem;">
+                    <div class="card-header py-3 bg-success text-white mb-4">
+                        <center><h4 class="my-0 fw-normal ">รายวิชาที่ได้รับเทียบโอนเพื่อเข้าศึกษาต่อ</h4></center>
+                    </div>
+                    <div class="row g-3 align-items-center mx-4 mb-4">
+                        <div class="col-auto">
+                          <label for="title" class="col-form-label">สถาบัน</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" id="Coll_name" name="Coll_name" required="">
+                                <option value="">เลือกสถาบัน</option>
+                                {% for college in colleges %}
+                                <option value="{{college.id}}">{{college.C_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center mx-4 mb-4">
+                        <div class="col-auto">
+                          <label for="title" class="col-form-label">สาขา &nbsp;&nbsp;</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" id="Coll_name" name="Coll_name" required="">
+                                <option value="">เลือกสาขา</option>
+                                {% for college in colleges %}
+                                <option value="{{college.id}}">{{college.C_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชามนุษย์ศาสตร์และสังคมสาศตร์</span></center>
+                        </div>
+                        <form class="mb-3" id="myForm" >
+                            <!-- ตำแหน่งสำหรับแทรกช่องใส่ข้อมูล -->
+                        </form>
+                        <center><button class="w-50 btn btn-sm btn-success mb-3" onclick="addInput()">เพิ่มข้อมูล</button></center>
+                            
+                            <script>
+                                function addInput() {
+                                var form = document.getElementById("myForm");
+                                var input = document.createElement("input");
+                                form.appendChild(input);
+                                }
+                            </script>
+                        
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชาภาษา</span></center>
+                        </div>
+
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชาคณิตศาสตร์และวิทยาศาสตร์</span></center>
+                        </div>
+
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชาแกน</span></center>
+                        </div>
+
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชาเลือก แขนงเทคโนโลยีสารสนเทศ</span></center>
+                        </div>
+
+                        <div class="card-header py-2 bg-secondary mb-4">
+                            <center><span class="my-0 fw-normal text-white">หมวดวิชาเลือกเสรี</span></center>
+                        </div>
+                    
+                        {% comment %} <input type="submit" value="ลงทะเบียน" class="w-100 btn btn-lg btn-success"> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
 
 {% endblock content %}
