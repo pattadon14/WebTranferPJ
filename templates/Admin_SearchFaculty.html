@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<br></br>
+<div class="container">
+    <div class="py-4 text-left">
+      <h2>ค้นหาข้อมูลสาขา</h2>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      {{ search_form.as_p }}
+        <button type="submit" class="btn btn-secondary me-md-2 btn-sm">Find Data</button>
+    </form>
+
+    {% for child in child_data %}
+    <p>{{ child }}</p>
+  {% empty %}
+    <p>No data found.</p>
+  {% endfor %}
+
+    <form>
+      <div class="container">
+          <br>
+          <h3 align ="center"> รายชื่อสาขาของโรงเรียน </h3><br>
+          <table class="table">
+              <thead class="table-dark">
+              <tr>
+                  <th scope="col">ลำดับที่</th>
+                  <th scope="col">สาขา</th>
+                  <th scope="col">โรงเรียน</th>
+                  <th scope="col"></th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for datacolleges in datacollege %}
+              <tr>
+                  <td scope="row">{{ forloop.counter}}</td>
+                  <td scope="row">{{datacolleges.Cmj_name}} </td>
+                  <td scope="row">{{datacolleges.Coll_name}}</td>
+              </tr>
+              {% empty %}              
+              <tr>
+                <td colspan="3">ไม่พบข้อมูลในระบบ</td>
+              </tr>
+              {% endfor %}
+              </tbody>
+          </table>
+        <a href="{% url 'Collmajor' %}" class="btn btn-primary me-md-2 btn-sm" >เพิ่มข้อมูลสาขา</a>
+      </div>
+
+{% endblock content %}

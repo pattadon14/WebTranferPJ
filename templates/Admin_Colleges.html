@@ -5,19 +5,18 @@
 
 
 <div class="container">
-    <form action="/collegepage/" method="POST">
+    <form action="/Collegepage/" method="POST">
         {% csrf_token %}
 
         <div class="py-4 text-left">
             <h2>จัดการข้อมูลโรงเรียน</h2>
-        </div> 
-        
-        <div class="col-sm-3">
-            <div class="form-group">
-                <label for="title">ชื่อโรงเรียน</label>
-                <input class="form-control" type="text" id = "C_name" name = "C_name" placeholder = "กรอกชื่อโรงเรียน">
-            </div><br>
         </div>
+        {% if messages  %}
+            {% for message in messages %}
+                <strong>{{message}}</strong>
+            {% endfor %}
+        {% endif %}<p><p>
+            {{form}}
         <input type="submit" value="เพิ่ม" class = "btn btn-success me-3">
     </form>
 
@@ -34,13 +33,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for college in colleges %}
+                {% for college in all_college %}
                 <tr>
-                    <td scope="row">{{ forloop.counter }}</td>
+                    <td scope="row">{{ forloop.counter}}</td>
                     <td scope="row">{{college.C_name}}</td>
                     <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <td><a href="/edit_collegepage/{{college.id}}" class="btn btn-warning me-md-2 btn-sm" >แก้ไข</a>
-                            <a href="/delete_collegepage/{{college.id}}" class="btn btn-danger me-md-2 btn-sm" onclick ="return confirm('คุณต้องการลบข้อมูล {{college.C_name}} หรือไม่ ?')">ลบ</a>
+                        <td><a href="{% url 'edit_college' college.id %}" class="btn btn-warning me-md-2 btn-sm" >แก้ไข</a>
+                            <a href="{% url 'delete_college' college.id %}" class="btn btn-danger me-md-2 btn-sm" onclick ="return confirm('คุณต้องการลบข้อมูล {{college.C_name}} หรือไม่ ?')">ลบ</a>
                         </td>
                     </div>
                 </tr>

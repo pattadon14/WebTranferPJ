@@ -11,33 +11,12 @@
         <div class="py-4 text-left">
             <h2>จัดการกลุ่มนักศึกษา</h2>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-              <label for="title" class="form-label">คณะ</label>
-              <select class="form-select" id="Fac_Name" name="Fac_Name" required="">
-                <option value="">เลือกคณะ</option>
-                {% for Faculty in all_Facultys %}
-                <option value="{{Faculty.id}}">{{Faculty.Fac_Name}}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="col-md-4">
-              <label for="title" class="form-label">สาขา</label>
-              <select class="form-select" id="Mj_name" name="Mj_name" required="">
-                <option value="">เลือกสาขา</option>
-                {% for Major in all_Majors %}
-                <option value="{{Major.id}}">{{Major.Mj_Name}}</option>
-                {% endfor %}
-              </select><br>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="form-group">
-                <label for="title">ชื่อกลุ่ม</label>
-                <input class="form-control" type="text" id = "G_name" name = "G_name" placeholder = "กรอกกลุ่มนักศึกษา">
-            </div><br>
-        </div>
-
+        {{form}}
+        {% if messages  %}
+            {% for message in messages %}
+                <strong>{{message}}</strong>
+            {% endfor %}
+        {% endif %}<p><p>
         <input type="submit" value="เพิ่ม" class = "btn btn-success me-3">
     </form>
 
@@ -51,18 +30,20 @@
                     <th scope="col">ลำดับที่</th>
                     <th scope="col">กลุ่ม</th>
                     <th scope="col">สาขา</th>
+                    <th scope="col">คณะ</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for Groups in all_Groups %}
+                {% for all_groups in all_group %}
                 <tr>
                     <td scope="row">{{ forloop.counter }}</td>
-                    <td scope="row">{{Groups.G_Name}}</td>
-                    <td scope="row">{{Groups.Mj_Name}}</td>
+                    <td scope="row">{{all_groups.G_Name}}</td>
+                    <td scope="row">{{all_groups.Mj_Name}}</td>
+                    <td scope="row">{{all_groups.Fac_name}}</td>
                     <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <td><a class="btn btn-warning me-md-2 btn-sm" href="#">แก้ไข</a>
-                        <a class="btn btn-danger btn-sm" href="#">ลบ</a></td>
+                        <td><a href="{% url 'edit_Group' all_groups.id %}"  class="btn btn-warning me-md-2 btn-sm" href="#">แก้ไข</a>
+                            <a href="{% url 'delete_Group' all_groups.id %}" class="btn btn-danger me-md-2 btn-sm" onclick ="return confirm('คุณต้องการลบข้อมูลกลุ่มเรียน {{all_groups.G_Name}} หรือไม่ ?')">ลบ</a></td>
                     </div>
                 </tr>
                 {% endfor %}

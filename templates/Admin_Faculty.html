@@ -5,22 +5,23 @@
 
 
 <div class="container">
-    <form action="/Faculty/" method="POST">
+    <form action="/Facultys/" method="POST">
         {% csrf_token %}
 
         <div class="py-4 text-left">
             <h2>จัดการคณะ</h2>
-        </div> 
-        
-        <div class="col-sm-3">
-            <div class="form-group">
-                <label for="title">ชื่อคณะ</label>
-                <input class="form-control" type="text" id = "Fac_Name" name = "Fac_Name" placeholder = "กรอกชื่อคณะ">
-            </div><br>
         </div>
-        <input type="submit" value="เพิ่ม" class = "btn btn-success me-3">
+        {{form}}   
+        <input type="submit" value="เพิ่ม" class = "btn btn-success me-3">       
+        {% if messages  %}
+        {% for message in messages %}
+            <strong>{{message}}</strong>
+            {% endfor %}
+        {% endif %}<p><p>    
+    
+</form>
     </form>
-
+    
     <form>
         <div class="container">
             <br>
@@ -31,16 +32,17 @@
                     <th scope="col">ลำดับที่</th>
                     <th scope="col">คณะ</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody >
-                {% for Faculty in all_Facultys %}
+                    {% for all_Faculty in all_Facultys %}                   
                 <tr>
                     <td scope="row">{{ forloop.counter }}</td>
-                    <td scope="row">{{Faculty.Fac_Name}}</td>
+                    <td scope="row">{{all_Faculty.Fac_Name}}</td>
                     <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <td><a class="btn btn-warning me-md-2 btn-sm" href="#">แก้ไข</a>
-                        <a class="btn btn-danger btn-sm" href="#">ลบ</a></td>
+                        <td><a href="{% url 'edit_Facultys' all_Faculty.id %}"  class="btn btn-warning me-md-2 btn-sm" >แก้ไข</a>
+                            <a href="{% url 'delete_Facultys' all_Faculty.id %}" class="btn btn-danger me-md-2 btn-sm" onclick ="return confirm('คุณต้องการลบข้อมูลคณะ {{all_Faculty.Fac_Name}} หรือไม่ ?')">ลบ</a></td>
                     </div>
                 </tr>
                 {% endfor %}

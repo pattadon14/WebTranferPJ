@@ -11,18 +11,12 @@
         <div class="py-4 text-left">
             <h2>จัดการ Admin</h2>
         </div> 
-        <div class="row">
-            <div class="col-sm-3">
-                <label for="title" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="กรอก Username" value="" required="">
-            </div>
-            <div class="col-sm-3">
-                <label for="title" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="กรอก Password" value="" required=""><br>
-            </div><br>
-        </div>
-        
-        
+        {{form}}
+        {% if messages  %}
+            {% for message in messages %}
+                <strong>{{message}}</strong>
+            {% endfor %}
+        {% endif %}<p><p>
         <input type="submit" value="เพิ่ม" class = "btn btn-success me-3">
     </form>
 
@@ -34,23 +28,27 @@
                 <thead class="table-dark">
                 <tr>
                     <th scope="col">ลำดับที่</th>
+                    <th scope="col">ชื่อ</th>
+                    <th scope="col">นามสกุล</th>
                     <th scope="col">Username</th>
                     <th scope="col">Password</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-
+                    {% for all_Admins in all_Admin %}      
                 <tr>
-                    <td scope="row">#</td>
-                    <td scope="row">#</td>
-                    <td scope="row">#</td>
+                    <td scope="row">{{ forloop.counter }}</td>
+                    <td scope="row">{{ all_Admins.Adm_Fname}}</td>
+                    <td scope="row">{{ all_Admins.Adm_Lname}}</td>
+                    <td scope="row">{{ all_Admins.Username }}</td>
+                    <td scope="row">{{ all_Admins.Password }}</td>
                     <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <td><a class="btn btn-warning me-md-2 btn-sm" href="#">แก้ไข</a>
-                        <a class="btn btn-danger btn-sm" href="#">ลบ</a></td>
+                        <td><a href="{% url 'edit_Admin' all_Admins.id %}" class="btn btn-warning me-md-2 btn-sm">แก้ไข</a>
+                            <a href="{% url 'delete_Admin' all_Admins.id %}" class="btn btn-danger me-md-2 btn-sm" onclick ="return confirm('คุณต้องการลบข้อมูล Admin Username {{all_Users.Username}} หรือไม่ ?')">ลบ</a></td>
                     </div>
                 </tr>
-
+                {% endfor %}
                 </tbody>
             </table>
         </div>

@@ -9,25 +9,16 @@
         {% csrf_token %}
 
         <div class="py-4 text-left">
-            <h2>จัดการสาขา</h2>
-        </div> 
-        <div class="col-md-3">
-                <label for="title" class="form-label">คณะ</label>
-                <select class="form-select" id="Fac_Name" name ="Fac_Name" required="">
-                  <option value="">เลือกคณะ</option>
-                  {% for Faculty in all_Facultys %}
-                  <option value="{{Faculty.id}}">{{Faculty.Fac_Name}}</option>
-                  {% endfor %}
-                </select><br>
+            <h2>จัดการสาขามหาวิทยาลัย</h2>
         </div>
-        <div class="col-sm-3">
-            <div class="form-group">
-                <label for="title">ชื่อสาขา</label>
-                <input class="form-control" type="text" id = "Mj_name" name = "Mj_name" placeholder = "กรอกชื่อสาขา">
-            </div><br>
-        </div>
-
+        {{form}}
+        {% if messages  %}
+            {% for message in messages %}
+                <strong>{{message}}</strong>
+            {% endfor %}
+        {% endif %}<p><p>
         <input type="submit" value="เพิ่ม" class = "btn btn-success me-3">
+        <a href="{% url 'Searchmajor' %}" input type="submit" class="btn btn-warning me-3 btn-sm" >ค้นหาข้อมูลสาขา</a>
     </form>
 
     <form>
@@ -44,14 +35,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for Major in all_Majors %}
+                {% for all_Majors in all_Major %}
                 <tr>
                     <td scope="row">{{ forloop.counter }}</td>
-                    <td scope="row">{{Major.Mj_Name}}</td>
-                    <td scope="row">{{Major.Fac_name}}</td>
+                    <td scope="row">{{all_Majors.Mj_Name}}</td>
+                    <td scope="row">{{all_Majors.Fac_name}}</td>
                     <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <td><a class="btn btn-warning me-md-2 btn-sm" href="#">แก้ไข</a>
-                        <a class="btn btn-danger btn-sm" href="#">ลบ</a></td>
+                        <td><a href="{% url 'edit_Major' all_Majors.id %}"  class="btn btn-warning me-md-2 btn-sm">แก้ไข</a>
+                            <a href="{% url 'delete_Major' all_Majors.id %}" class="btn btn-danger btn-sm" onclick ="return confirm('คุณต้องการลบข้อมูลสาขา {{all_Majors.Mj_Name}} หรือไม่ ?')">ลบ</a></td>
                     </div>
                 </tr>
                 {% endfor %}
