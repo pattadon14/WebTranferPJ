@@ -122,168 +122,89 @@
 
                 <form>
 
-                  <center><div class="card mb-4 rounded-3 shadow-sm " style="width:40rem;">
+                  <center><div class="card mb-4 rounded-3 shadow-sm " style="width:35rem;">
                       <div class="card-header py-3 bg-warning mb-4">
-                          <center><h4 class="my-0 fw-normal">ลงทะเบียน</h4></center>
+                          <center><h4 class="my-0 fw-normal"><b>ลงทะเบียน</b></h4></center>
                       </div>
                       <div class="row">
-                        <div class="col-sm-4 text-start mb-3 mx-3">
-                          <label for="title" class="form-label">ปีการศึกษา</label>
+                        <div class="col-sm-4 text-start mb-3 mx-4">
+                          <label for="title" class="form-label"><b>ปีการศึกษา</b></label>
                           <input type="#" class="form-control" id="#" placeholder="" value="" required="" Disabled input example" disabled">
                         </div>
-                        <div class="row-sm-4 text-start mb-3 mx-3">
-                          <label for="title" class="form-label">รหัสนักศึกษา</label>
-                          <input type="text" class="form-control" pattern=".{13,}" id="#" name = "#" placeholder="รหัสนักศึกษา 13 หลัก" >
-                        </div>
+                        <div class="row mb-3 mx-3">
+                          <div class="col-sm-5 text-start">
+                            <label for="title" class="form-label"><b>รหัสนักศึกษา</b></label>
+                            <input type="text" class="form-control" pattern=".{13,}" id="#" name="#" placeholder="รหัสนักศึกษา 13 หลัก">
+                          </div>
+                        </div>                        
                         <div class="row justify-content-left mb-3 mx-3">
-                          <div class="col-sm-4 text-start">
-                            <label for="title" class="form-label">ชื่อ</label>
+                          <div class="col-sm-5 text-start">
+                            <label for="title" class="form-label"><b>ชื่อ</b></label>
                             <input type="text" class="form-control" pattern="[A-Za-z]" id="#" name = "#" placeholder="กรอก ชื่อ">
                           </div>
-                          <div class="col-sm-4 text-start">
-                              <label for="title" class="form-label">นามสกุล</label>
+                          <div class="col-sm-5 text-start">
+                              <label for="title" class="form-label"><b>นามสกุล</b></label>
                               <input type="text" class="form-control" pattern="[A-Za-z]" id="#" name = "#" placeholder="กรอก นามสกุล" >
                           </div>
                         </div>
-                        <div class="col-md-7 text-start mb-3">
-                          <label for="#" class="form-label ">คณะ</label>
+                        <div class="col-md-7 text-start mb-3 mx-4">
+                          <label for="#" class="form-label "><b>คณะ</b></label>
                           <select class="form-select" id="#" name = "#" >
                             <option value="">เลือกคณะ</option>
                             <option>#</option>
                           </select>
                         </div>
-                        <div class="col-md-7 text-start mb-3">
-                          <label for="#" class="form-label">สาขา</label>
+                        <div class="col-md-7 text-start mb-3  mx-4">
+                          <label for="#" class="form-label"><b>สาขา</b></label>
                           <select class="form-select" id="#" name = "#">
                             <option value="">เลือกสาขา</option>
                             <option>#</option>
                           </select>
                         </div>
-                        <div class="col-md-4 text-start mb-3">
-                          <label for="#" class="form-label">กลุ่มเรียน</label>
+                        <div class="col-md-4 text-start mb-3 mx-4">
+                          <label for="#" class="form-label"><b>กลุ่มเรียน</b></label>
                           <select class="form-select" id="#" name = "#">
                             <option value="">เลือกกลุ่มเรียน</option>
                             <option>#</option>
                           </select>
                         </div>
-                        <div class="col-md-7 text-start mb-3">
-                          <label for="#" class="form-label">อาจารย์ที่ปรึกษา</label>
+                        <div class="col-md-7 text-start mb-3  mx-4">
+                          <label for="#" class="form-label"><b>อาจารย์ที่ปรึกษา</b></label>
                           <select class="form-select" id="#" name = "#">
                             <option value="">เลือกอาจารย์ที่ปรึกษา</option>
                             <option>#</option>
                           </select>
                         </div>
-                        <div class="col-md-7 text-start mb-3">
-                          <label for="#" class="form-label">โรงเรียน</label>
+                        <div class="col-md-7 text-start mb-3 mx-4">
+                          <label for="#" class="form-label"><b>โรงเรียน</b></label>
                           <select class="form-select" id="#" name = "#">
                             <option value="">เลือกโรงเรียน</option>
                             <option>#</option>
                           </select>
                         </div>
-                        <div class="col-md-7 text-start mb-3">
-                          <label for="#" class="form-label">สาขาที่จบ</label>
+                        <div class="col-md-7 text-start mb-3 mx-4">
+                          <label for="#" class="form-label"><b>สาขาที่จบ</b></label>
                           <select class="form-select" id="#" name = "#">
                             <option value="">เลือกสาขา</option>
                             <option>#</option>
                           </select>
                         </div>
-                      <div class="row g-3 justify-content-center mb-5">
-                          <div class="col-sm-4 text-start">
-                              <label for="title" class="form-label">Password</label>
-                              <input type="password" class="form-control" id="#" name = "#" placeholder="กรอก Password" >
+                        <div class="row justify-content-left mb-3 mx-3">
+                          <div class="col-sm-5 text-start">
+                            <label for="title" class="form-label"><b>Password</b></label>
+                            <input type="password" class="form-control" id="#" name = "#" placeholder="กรอก Password" >
                           </div>
-                          <div class="col-sm-4 text-start">
-                              <label for="title" class="form-label">ยืนยัน Password</label>
-                              <input type="password" class="form-control" id="#" name = "#" placeholder="ยืนยัน Password" >
+                          <div class="col-sm-5 text-start">
+                              <label for="title" class="form-label"><b>ยืนยัน Password</b></label>
+                              <input type="password" class="form-control" id="#" name = "#" placeholder="ยืนยัน Password" ><br>
                           </div>
-                      </div>
+                        </div>
+                      </div>  
                       <input type="submit" value="ลงทะเบียน" class="w-100 btn btn-lg btn-success">
                   </div></center>
-
-              </form>
-
-                {% comment %} <center><div class="py-4">
-                    <h2>ลงทะเบียน</h2>
-                </div></center>
-                <div class="col-sm-2">
-                    <label for="title" class="form-label">ปีการศึกษา</label>
-                    <input type="#" class="form-control" id="#" placeholder="" value="" required="" Disabled input example" disabled"><br>
-                </div>
-                <div class="col-sm-3">
-                    <label for="title" class="form-label">รหัสนักศึกษา</label>
-                    <input type="text" class="form-control" id="#" name = "#" placeholder="รหัสนักศึกษา 13 หลัก" ><br>
-                </div>
-                <div class="row g-3">
-                    <div class="col-sm-3">
-                        <label for="title" class="form-label">ชื่อ</label>
-                        <input type="text" class="form-control" id="#" name = "#" placeholder="กรอก ชื่อ">
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="title" class="form-label">นามสกุล</label>
-                        <input type="text" class="form-control" id="#" name = "#" placeholder="กรอก นามสกุล" ><br>
-                    </div>
-                </div>
-                <div class="row g-3">
-                    <div class="col-md-3">
-                    <label for="#" class="form-label ">คณะ</label>
-                    <select class="form-select" id="#" name = "#" >
-                        <option value="">เลือกคณะ</option>
-                        <option>#</option>
-                    </select>
-                    </div>
-                    <div class="col-md-3">
-                    <label for="#" class="form-label">สาขา</label>
-                    <select class="form-select" id="#" name = "#">
-                        <option value="">เลือกสาขา</option>
-                        <option>#</option>
-                    </select><br>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="#" class="form-label">กลุ่มเรียน</label>
-                        <select class="form-select" id="#" name = "#">
-                        <option value="">เลือกกลุ่มเรียน</option>
-                        <option>#</option>
-                        </select><br>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <label for="#" class="form-label">อาจารย์ที่ปรึกษา</label>
-                    <select class="form-select" id="#" name = "#">
-                    <option value="">เลือกอาจารย์ที่ปรึกษา</option>
-                    <option>#</option>
-                    </select><br>
-                </div>
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <label for="#" class="form-label">โรงเรียน</label>
-                        <select class="form-select" id="#" name = "#">
-                        <option value="">เลือกโรงเรียน</option>
-                        <option>#</option>
-                        </select><br>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="#" class="form-label">สาขาที่จบ</label>
-                        <select class="form-select" id="#" name = "#">
-                        <option value="">เลือกสาขา</option>
-                        <option>#</option>
-                        </select><br>
-                    </div>
-                </div>
-                <div class="row g-3">
-                    <div class="col-sm-3">
-                        <label for="title" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="#" name = "#" placeholder="กรอก Password" ><br>
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="title" class="form-label">ยืนยัน Password</label>
-                        <input type="password" class="form-control" id="#" name = "#" placeholder="ยืนยัน Password" ><br>
-                    </div>
-                </div>
-
-                <input type="submit" value="ลงทะเบียน" class = "btn btn-success me-3">
-            </form>
-
-        </div> {% endcomment %}
+                
+                  </form>  
+              </form>              
   </body>
 </html>
         {% endblock content %}

@@ -8,16 +8,17 @@
     <form action="/Collegepage/" method="POST">
         {% csrf_token %}
 
-        <div class="py-4 text-left">
-            <h2>จัดการข้อมูลโรงเรียน</h2>
-        </div>
-        {% if messages  %}
-            {% for message in messages %}
-                <strong>{{message}}</strong>
-            {% endfor %}
-        {% endif %}<p><p>
-            {{form}}
-        <input type="submit" value="เพิ่ม" class = "btn btn-success me-3">
+            <div class="py-4 text-left">
+                <h2><b>จัดการข้อมูลโรงเรียน</b></h2>
+            </div>
+
+            {% if messages  %}
+                {% for message in messages %}
+                    <strong>{{message}}</strong>
+                {% endfor %}
+            {% endif %}<p><p>
+                {{form}}
+            <input type="submit" value="เพิ่ม" class = "btn btn-success me-3">
     </form>
 
     <form>

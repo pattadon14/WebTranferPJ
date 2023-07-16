@@ -1,13 +1,24 @@
 from django import forms
 from Webtranfer.models import *
 
+# class CollegeForm(forms.ModelForm):
+#     class Meta:
+#         model = College
+#         fields ="__all__"
+#         labels={
+#             'C_name' :'ชื่อโรงเรียน'
+#         }
+
 class CollegeForm(forms.ModelForm):
+    C_name = forms.CharField(label='ชื่อโรงเรียน', widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'กรอกชื่อโรงเรียน'}))
+
     class Meta:
         model = College
-        fields ="__all__"
-        labels={
-            'C_name' :'ชื่อโรงเรียน'
+        fields = "__all__"
+        labels = {
+            'C_name': 'ชื่อโรงเรียน'
         }
+
 
 class Coll_MajorForm(forms.ModelForm):
     class Meta:
@@ -113,5 +124,4 @@ class Cur_GroupForm(forms.ModelForm):
         labels={
             'CG_ID':'รหัสหมวด',
             'CG_Name':'ชื่อหมวด'}
-
         

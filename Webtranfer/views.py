@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from Webtranfer.forms import *
 from django.db.models import Q
 
+####Test#######
+
 ####### Normal #######
 
 def Home(request):
@@ -21,7 +23,6 @@ def LoginAdvisor(request):
 
 def LoginAdmin(request):
     return render(request,'Login_Admin.html')
-
 
 #######  ADMIN  #######
 
